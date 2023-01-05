@@ -11,6 +11,8 @@ from markupsafe import escape
 
 from flask import request
 
+import connect
+
 
 app = Flask(__name__)
 
@@ -40,20 +42,34 @@ def show_subpath(subpath):
     return f'Subpath {escape(subpath)}'
     # http://127.0.0.1:5000/path/you/know/there/will/be/more/path
     
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    # error = None
-    if request.method == 'GET':
-        print("falls in first if")
-        print(request.form['username'])
+# CORE
+# timRecieve 
+@app.route('/timRecieve', methods=['POST', 'GET'])
+def timRecieve():
     if request.method == 'POST':
-        print("falls in second if")
-        print("most likely to be POST ")
-        print(request.form['username'])
-    else:
-        print("it is neither GET or POST")
-    return 'login.html'
-
+        print("req method is POST ")
+        
+        print(request.form['timMethod'])
+        print(request.form['content'])
+        
+        timMethod = request.form['timMethod']
+        
+        contentToReturn = connect.connectFunc(timMethod, 1)
+        
+        print(contentToReturn)
+        
+        return contentToReturn
+    
+    
+    
+    if request.method == 'GET':
+        
+        timMethod = request.args['timMethod']
+        
+        contentToReturn = connect.connectFunc(timMethod, 1)
+        
+        return  contentToReturn
+     
 
 
 
