@@ -8,6 +8,10 @@ Created on Sat Dec 31 12:20:29 2022
 """
 
 from pymongo import MongoClient
+from bson.json_util import dumps
+from bson.json_util import loads
+
+
 
 def connectFunc(method, content):
     
@@ -23,68 +27,50 @@ def connectFunc(method, content):
     
     colUsergao = db.get_collection('userGaoList')
     
-    # jjson = colUsergao.find_one({'method': 1})
     
-    # id = jjson.get("_id")
+    # def tests():
+    #     list = colUsergao.list_indexes()
     
-    # idItem = colUsergao.find_one(id)
+   
     
-    # boolerer = idItem == jjson
-    
-    # print(boolerer)
-    
-    # print(idItem)
-    
-    # print(type(idItem))
-    
-    # print(idItem["_id"])
-    
-    # print(idItem["data"]["content"])
-    
-    # {'_id': ObjectId('618f73a870e67e5bfb0c6141'), 'method': 1, 'data': {'date': 2019, 'tag': 'work', 'content': 'tim means i want to treasure my time', 'done': 'false'}}
-    
-    # print(thisdict["brand"])
-    
-    
-    # almost done
-    
-    
-    # ready to get all
-    # jjson = colUsergao.find_one({'method': 1})
-    
-    
-    def addOne():
+    def addOne(theContentToAdd):
+        
+        # theContentToAdd
+        
+        # colUsergao.insert_one()
+        
         return 'this is add one'
     
     def findAll():
-    
-        allJson = colUsergao.find()
         
-        # for item in allJson:
-        #     print(item)
+        cursor = colUsergao.find()
+
+        dataJsonString = dumps(cursor)
+
+        # dataList = loads(dataJsonString)
         
-        returnAllcontent = ''
-        for item in allJson:
-            
-            # print("→" + item['data']['content'])
-            
-             returnAllcontent += "→ " + item['data']['content'] + '\n'
-            
-        return returnAllcontent
+        return dataJsonString
     
     def findOne():
-        # aa
         
-        return 'this is find one'
+        one = colUsergao.aggregate( [
+            {"$sample": { "size" : 1} },
+        ] )
+        
+        oneD = dumps(one)
+        
+        return oneD
     
-    def deleteOne():
+    def deleteOne(theContentToDel):
+        
+        # colUsergao.find_one_and_delete(filter, kwargs)
         
         return 'deleteOne'
     
    
     
     if method == 'inputContent':
-        returnMessage = findOne()
+        returnMessage = addOne(content)
     
     if method == 'retrieveAllContent':    
         returnMessage = findAll()
@@ -93,7 +79,10 @@ def connectFunc(method, content):
         returnMessage = findOne()
     
     if method == 'deleteOneContent':    
-        returnMessage = deleteOne()
+        returnMessage = deleteOne(content)
+        
+    # if method == 'tests':    
+    #     returnMessage = tests()
         
     client.close()
     

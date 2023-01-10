@@ -47,14 +47,16 @@ def show_subpath(subpath):
 @app.route('/timRecieve', methods=['POST', 'GET'])
 def timRecieve():
     if request.method == 'POST':
-        print("req method is POST ")
+        # print("req method is POST ")
         
         print(request.form['timMethod'])
-        print(request.form['content'])
+        # print(request.form['content'])
         
         timMethod = request.form['timMethod']
+        timContent = request.form['content']
         
-        contentToReturn = connect.connectFunc(timMethod, 1)
+        
+        contentToReturn = connect.connectFunc(timMethod, timContent)
         
         print(contentToReturn)
         

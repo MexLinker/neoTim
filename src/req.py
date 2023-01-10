@@ -5,7 +5,9 @@
 # @author: 26440
 # """
 
+from sys import exit
 import requests
+
 
 # # =============================================================================
 # # those are useful codes to access the server 
@@ -53,6 +55,8 @@ inputContent = input()
 
 if inputContent == 'h':
     print("this is the help for tim")
+    # exit()
+    exit()
     
 # what i will sent to server is {'method':1,'content':'this is content'}
 
@@ -73,6 +77,7 @@ if inputContent == '4':
 
 # # m = 3
 # # n = 7
+
 
 print(postRespon.text)
 
