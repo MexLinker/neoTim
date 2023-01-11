@@ -23,13 +23,8 @@ def connectFunc(method, content):
     
     db = client.get_database("todoList")
 
-    # collectionNames = db.list_collection_names()
     
     colUsergao = db.get_collection('userGaoList')
-    
-    
-    # def tests():
-    #     list = colUsergao.list_indexes()
     
    
     
@@ -81,9 +76,7 @@ def connectFunc(method, content):
     if method == 'deleteOneContent':    
         returnMessage = deleteOne(content)
         
-    # if method == 'tests':    
-    #     returnMessage = tests()
-        
+
     client.close()
     
     return returnMessage

@@ -7,6 +7,9 @@
 
 from sys import exit
 import requests
+from bson.json_util import dumps
+from bson.json_util import loads
+
 
 
 # # =============================================================================
@@ -19,50 +22,29 @@ import requests
 # # print(postRespon.text)
 # # =============================================================================
 
-helloTimeToPrint = ''''welcome to tim,\n
-          _____                    _____                   _______           _____                    _____                    _____          
-         /\    \                  /\    \                 /::\    \         /\    \                  /\    \                  /\    \         
-        /::\____\                /::\    \               /::::\    \       /::\    \                /::\    \                /::\____\        
-       /::::|   |               /::::\    \             /::::::\    \      \:::\    \               \:::\    \              /::::|   |        
-      /:::::|   |              /::::::\    \           /::::::::\    \      \:::\    \               \:::\    \            /:::::|   |        
-     /::::::|   |             /:::/\:::\    \         /:::/~~\:::\    \      \:::\    \               \:::\    \          /::::::|   |        
-    /:::/|::|   |            /:::/__\:::\    \       /:::/    \:::\    \      \:::\    \               \:::\    \        /:::/|::|   |        
-   /:::/ |::|   |           /::::\   \:::\    \     /:::/    / \:::\    \     /::::\    \              /::::\    \      /:::/ |::|   |        
-  /:::/  |::|   | _____    /::::::\   \:::\    \   /:::/____/   \:::\____\   /::::::\    \    ____    /::::::\    \    /:::/  |::|___|______  
- /:::/   |::|   |/\    \  /:::/\:::\   \:::\    \ |:::|    |     |:::|    | /:::/\:::\    \  /\   \  /:::/\:::\    \  /:::/   |::::::::\    \ 
-/:: /    |::|   /::\____\/:::/__\:::\   \:::\____\|:::|____|     |:::|    |/:::/  \:::\____\/::\   \/:::/  \:::\____\/:::/    |:::::::::\____\
-\::/    /|::|  /:::/    /\:::\   \:::\   \::/    / \:::\    \   /:::/    //:::/    \::/    /\:::\  /:::/    \::/    /\::/    / ~~~~~/:::/    /
- \/____/ |::| /:::/    /  \:::\   \:::\   \/____/   \:::\    \ /:::/    //:::/    / \/____/  \:::\/:::/    / \/____/  \/____/      /:::/    / 
-         |::|/:::/    /    \:::\   \:::\    \        \:::\    /:::/    //:::/    /            \::::::/    /                       /:::/    /  
-         |::::::/    /      \:::\   \:::\____\        \:::\__/:::/    //:::/    /              \::::/____/                       /:::/    /   
-         |:::::/    /        \:::\   \::/    /         \::::::::/    / \::/    /                \:::\    \                      /:::/    /    
-         |::::/    /          \:::\   \/____/           \::::::/    /   \/____/                  \:::\    \                    /:::/    /     
-         /:::/    /            \:::\    \                \::::/    /                              \:::\    \                  /:::/    /      
-        /:::/    /              \:::\____\                \::/____/                                \:::\____\                /:::/    /       
-        \::/    /                \::/    /                 ~~                                       \::/    /                \::/    /        
-         \/____/                  \/____/                                                            \/____/                  \/____/         
-                                                                                                                                              
-
-input 1 to add a verse to database \n
-input 2 to retrieve all records\n
-input 3 to retrieve random one of records\n
-input 4 to delete one using matching content\n
-\n'''
+helloTimeToPrint = '''Welcome to tim,\nYour neoTim\nType h for help'''
 
 print(helloTimeToPrint)
 
 inputContent = input()
 
 if inputContent == 'h':
+    helpContent = '''
+    input 1 to add a verse to database \n
+    input 2 to retrieve all records\n
+    input 3 to retrieve random one of records\n
+    input 4 to delete one using matching content\n'''
+    
     print("this is the help for tim")
-    # exit()
+    print(helpContent)
+    
     exit()
     
 # what i will sent to server is {'method':1,'content':'this is content'}
 
 if inputContent == '1':
-    theItemToAdd = input("please input the item to add /n")
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'inputContent','content':'ThisIsTheContent'})
+    theItemToAdd = input("please input the item to add \n")
+    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'inputContent','content':theItemToAdd})
 
 if inputContent == '2':
     print("this is a test for retrive all")
@@ -73,44 +55,37 @@ if inputContent == '3':
     postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'retrieveOneContent','content':'thisIsUseLessContentForRetrevingOne'})
 
 if inputContent == '4':
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'deleteOneContent','content':'thisIsDeleOneContentIWillAdd'})
+    theItemToDel = input("input the item to delete\n")
+    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'deleteOneContent','content':theItemToDel})
 
 # # m = 3
 # # n = 7
 
 
-print(postRespon.text)
+# print(postRespon.text)
+
+# print(loads(postRespon))
+
+# postString = dumps(postRespon)
+
+# postList = loads(postString)
+
+# for item in postList:
+#     print( item )
 
 
-# # def timHelp():
-# #     print("this is the help for tim")
-# #     return n+m
-# # def addDatabase():
-# #     theItemToAdd = input("please input the item to add")
-# #     return n-m
-# # def prod():
-# #     return n*m
-# # def div():
-# #     return m/n
-# # def rem():
-# #     return m%n
+dataList = loads(postRespon.text)
 
-# # def operations(op):
-# #     switch={
-# #        'h': timHelp(),
-# #        '1': addDatabase(),
-# #        '*': prod(),
-# #        '/': div(),
-# #        '%': rem(),
-# #        }
-# #     return switch.get(op,'Choose one of the following operator:+,-,*,/,%')
-
-# # # opCode = input("chosee a operation from + - .. ==>")
-
-# # ans = operations(inputContent)
+for item in dataList:
+        print("  ➙  " + item["data"]["content"]  +  "\n")
+        # print("K")
 
 
 
 
-# postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'retrieveContent','content':'thisIsUseLessContentForRetreving'})
+
+
+
+
+
 
