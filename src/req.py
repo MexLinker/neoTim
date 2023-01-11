@@ -42,21 +42,25 @@ if inputContent == 'h':
     
 # what i will sent to server is {'method':1,'content':'this is content'}
 
+
+URLofService = "http://127.0.0.1:5000"
+
+
 if inputContent == '1':
     theItemToAdd = input("please input the item to add \n")
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'inputContent','content':theItemToAdd})
+    postRespon = requests.post( URLofService +  "/timRecieve", data={'timMethod':'inputContent','content':theItemToAdd})
 
 if inputContent == '2':
     print("this is a test for retrive all")
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'retrieveAllContent','content':'thisIsUseLessContentForRetrevingAll'})
+    postRespon = requests.post( URLofService + "/timRecieve", data={'timMethod':'retrieveAllContent','content':'thisIsUseLessContentForRetrevingAll'})
 
 if inputContent == '3':
     print("this is a test for retrive one")
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'retrieveOneContent','content':'thisIsUseLessContentForRetrevingOne'})
+    postRespon = requests.post( URLofService + "/timRecieve", data={'timMethod':'retrieveOneContent','content':'thisIsUseLessContentForRetrevingOne'})
 
 if inputContent == '4':
     theItemToDel = input("input the item to delete\n")
-    postRespon = requests.post("http://127.0.0.1:5000/timRecieve", data={'timMethod':'deleteOneContent','content':theItemToDel})
+    postRespon = requests.post( URLofService + "/timRecieve", data={'timMethod':'deleteOneContent','content':theItemToDel})
 
 # # m = 3
 # # n = 7
