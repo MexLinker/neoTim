@@ -43,7 +43,7 @@ if inputContent == 'h':
 # what i will sent to server is {'method':1,'content':'this is content'}
 
 
-URLofService = "http://127.0.0.1:5000"
+URLofService = "http://127.0.0.1:3002"
 
 
 if inputContent == '1':
