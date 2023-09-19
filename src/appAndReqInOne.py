@@ -121,14 +121,6 @@ def connectFunc(method, content, col):
 
 
 
-
-
-
-
-
-
-
-
 @app.route('/timRecieve', methods=['POST', 'GET'])
 def timRecieve():
     if request.method == 'POST':

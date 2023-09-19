@@ -6,7 +6,15 @@ console.log("This is a popup!")
 // window.alert("it begains!")
 
 
-var URLofService = "http://116.205.178.204:3002/timRecieve?timMethod=retrieveOneContent&content=thisIsUseLessContentForRetrevingAll"
+// this is the origine line i changed in 2023.9.19 because i have no web server
+// var URLofService = "http://116.205.178.204:3002/timRecieve?timMethod=retrieveOneContent&content=thisIsUseLessContentForRetrevingAll"
+
+
+//这个是本地地址
+var URLofService = "http://127.0.0.1:3002/timRecieve?timMethod=retrieveOneContent&content=thisIsUseLessContentForRetrevingAll"
+
+
+
 
 // postRespon = requests.post( URLofService +  "/timRecieve", data={'timMethod':'inputContent','content':theItemToAdd})
 
