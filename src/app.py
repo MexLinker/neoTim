@@ -58,6 +58,7 @@ def timRecieve():
         
         contentToReturn = connect.connectFunc(timMethod, timContent)
         
+        print( type(contentToReturn))
         print(contentToReturn)
         
         return contentToReturn

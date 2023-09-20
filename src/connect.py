@@ -27,14 +27,24 @@ def connectFunc(method, content):
     colUsergao = db.get_collection('userGaoList')
     
    
-    
+    # the old addOne made a bug
+    # def addOne(theContentToAdd):
+        
+    #     # theContentToAdd
+        
+    #     # colUsergao.insert_one()
+        
+    #     return 'this is add one'
+
     def addOne(theContentToAdd):
-        
-        # theContentToAdd
-        
-        # colUsergao.insert_one()
-        
-        return 'this is add one'
+
+        record = {"method": 1, "data": {"date": 2019, "tag": "work", "content": theContentToAdd, "done": "false"}}
+
+        colUsergao.insert_one(record)
+
+        strstrstrNew = """[{"_id": {"$oid": "6268c6faf4c2fd742ce5be9d"}, "method": 1, "data": {"date": 2019, "tag": "work", "content": "inserted successfully", "done": "false"}}]"""
+
+        return strstrstrNew
     
     def findAll():
         
@@ -60,7 +70,9 @@ def connectFunc(method, content):
         
         # colUsergao.find_one_and_delete(filter, kwargs)
         
-        return 'deleteOne'
+        strstrstrNew = """[{"_id": {"$oid": "6268c6faf4c2fd742ce5be9d"}, "method": 1, "data": {"date": 2019, "tag": "work", "content": "deleted successfully", "done": "false"}}]"""
+
+        return strstrstrNew
     
    
     
