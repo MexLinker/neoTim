@@ -30,6 +30,9 @@ pip uninstall pymongo
 pip uninstall bson
 pip install pymongo
 
+---
+
+okey! what happend? Aug 2024, I installed a debian in my tower PC, I am prepare to do some improve and fix on tim!
 
 
 
