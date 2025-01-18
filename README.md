@@ -1,4 +1,4 @@
-# neoTim
+### neoTim
 
 neoTim is an advanced version of tim, which functioned by severless function, and noe it is based on Flask, the database still remains free MongoDB for personal user
 
@@ -11,7 +11,7 @@ and there are some scripts:
 
 set FLASK_APP=C:/Users/26440/Desktop/workGaoInMarch/neoTim/src/app.py
 flask run --host=0.0.0.0 -p 3002
-sudo nohup /usr/local/bin/flask run --host=0.0.0.0 -p 3002 > log.txt 2>&1 &
+
 
 the default port of the program is **3002**
 to run it, at boot put the program at start folder --                  C:\Users\26440\AppData\Roaming\Microsoft\Windows\Start Menu\Programs
@@ -57,7 +57,8 @@ run the flask app server by
 
 ```
 flask run --host=0.0.0.0 -p 3002
-
+# or in background
+sudo nohup /usr/local/bin/flask run --host=0.0.0.0 -p 3002 > log.txt 2>&1 &
 ```
 
 run the req.py to tim
