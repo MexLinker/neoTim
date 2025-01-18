@@ -35,6 +35,33 @@ pip install pymongo
 okey! what happend? Aug 2024, I installed a debian in my tower PC, I am prepare to do some improve and fix on tim!
 
 
+---
+
+### Config Tips From Jan 2025
+
+mainly on MacOS
+
+```bash
+
+python -m venv forTim
+
+source activete 
+
+pip3 install requests pymongo flask
+
+# please do not install flask on pipx
+
+```
+
+run the flask app server by 
+
+```
+flask run --host=0.0.0.0 -p 3002
+
+```
+
+run the req.py to tim
+
 
 
 
