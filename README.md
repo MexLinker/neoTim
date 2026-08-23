@@ -70,3 +70,9 @@ run the req.py to tim
 
 
 
+---
+
+satement repo change at Aug2026, add new req file and server start file, you know which to use.
+You should now use the serverStart file in /, and the new req_verion2.py in /src/
+
+I will change those later.
